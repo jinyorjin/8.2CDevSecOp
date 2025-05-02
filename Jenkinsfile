@@ -32,4 +32,15 @@ pipeline {
       }
     }
   }
+
+  post {
+    always {
+      emailext (
+        subject: "Build - ${env.JOB_NAME} #${env.BUILD_NUMBER} - ${currentBuild.currentResult}",
+        body: """Build status: ${currentBuild.currentResult}\n\nSee details at: ${env.BUILD_URL}""",
+        to: "s223715707@deakin.edu.au",
+        attachLog: true
+      )
+    }
+  }
 }
