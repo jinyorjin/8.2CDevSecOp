@@ -31,13 +31,13 @@ pipeline {
         bat 'npm audit || exit /b 0'
       }
     }
-  }
-  stage('Snyk Test') {
-    steps {
-        bat 'snyk test || exit /b 0'
-    }
-}
 
+    stage('Snyk Test') {
+      steps {
+        bat 'snyk test || exit /b 0'
+      }
+    }
+  }
 
   post {
     always {
