@@ -32,6 +32,12 @@ pipeline {
       }
     }
   }
+  stage('Snyk Test') {
+    steps {
+        bat 'snyk test || exit /b 0'
+    }
+}
+
 
   post {
     always {
